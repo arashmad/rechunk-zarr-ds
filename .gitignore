@@ -1,0 +1,29 @@
+# IDE
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+.env
+venv/
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv
+
+# Test
+htmlcov/
+.coverage
+.pytest*
+
+# Docs
+docs/
+
+# Other files/folders
+_sandbox
