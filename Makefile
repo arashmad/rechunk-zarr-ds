@@ -7,6 +7,7 @@ test:
 	poetry run coverage run --source=rechunk_zarr_ds/ -m pytest -v
 	poetry run coverage report --show-missing
 	poetry run coverage html
+	poetry run coverage json -o coverage.json
 
 # Build docs.
 docs:
