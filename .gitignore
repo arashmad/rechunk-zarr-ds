@@ -19,7 +19,7 @@ dist/
 
 # Test
 htmlcov/
-coverage.json
+coverage.*
 .coverage
 .pytest*
 
