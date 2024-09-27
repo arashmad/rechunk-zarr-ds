@@ -15,7 +15,5 @@ jobs:
           python-version: "3.12"
       - name: Install requirements
         run: poetry install
-      # - name: Activate enviroment
-      #   run: poetry shell
       - name: Test lint
         run: make lint
