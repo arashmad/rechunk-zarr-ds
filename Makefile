@@ -4,7 +4,7 @@ lint:
 
 # Run test and display/create coverage report.
 test:
-	coverage run --source=rechunk_zarr_ds -m pytest -v
+	coverage run --source=rechunk_zarr_ds/ -m pytest -v
 	coverage report --show-missing
 	coverage html
 
