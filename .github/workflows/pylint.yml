@@ -3,7 +3,7 @@ name: Pylint
 on: [push]
 
 jobs:
-  Test:
+  PyLint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,5 +17,3 @@ jobs:
         run: poetry install
       - name: Test lint
         run: make lint
-      - name: Test code
-        run: make test
