@@ -4,9 +4,9 @@ lint:
 
 # Run test and display/create coverage report.
 test:
-	coverage run --source=rechunk_zarr_ds/ -m pytest -v
-	coverage report --show-missing
-	coverage html
+	poetry run coverage run --source=rechunk_zarr_ds/ -m pytest -v
+	poetry run coverage report --show-missing
+	poetry run coverage html
 
 # Build docs.
 docs:
