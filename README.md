@@ -51,7 +51,7 @@ print(zarr_ds.chunks) # (1, 2) for test data "potsdam_supermarkets.json"
 print(zarr_ds.nchunks) # 63 for test data "potsdam_supermarkets.json"
 ```
 
-#### 1. Re-chunk zarr file
+#### 2. Re-chunk zarr file
 
 ```python
 from rechunk_zarr_ds.main import re_chunk_zarr_file
