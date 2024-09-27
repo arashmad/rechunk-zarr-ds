@@ -6,7 +6,7 @@ A small python module that provides functionalities to generate and re-chunk inp
 
 [![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
-[![coverage](https://img.shields.io/badge/Coverage-unknown-red)]()
+[![codecov](https://codecov.io/gh/arashmad/rechunk-zarr-ds/graph/badge.svg?token=Z8Aabt3Yr0)](https://codecov.io/gh/arashmad/rechunk-zarr-ds)
 
 Poetry helps you declare, manage and install dependencies of Python projects,
 ensuring you have the right stack everywhere.
