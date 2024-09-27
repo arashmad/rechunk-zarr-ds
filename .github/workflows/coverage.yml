@@ -1,9 +1,9 @@
-name: Run test for code style
+name: Run tests and report coverage
 
 on: [push]
 
 jobs:
-  PyLint:
+  PyTest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,5 +15,5 @@ jobs:
           python-version: "3.12"
       - name: Install requirements
         run: poetry install
-      - name: Test lint
-        run: make lint
+      - name: Run test with coverage
+        run: make test
