@@ -120,7 +120,9 @@ def re_chunk_zarr_file(
 
         if output_dir:
             zarr_rechunked[-final_chunk_size:] = remained_chunk
-            return zarr_rechunked, re_chunked_file_path
+        else:
+            zarr_ds[-final_chunk_size:] = remained_chunk
 
-        zarr_ds[-final_chunk_size:] = remained_chunk
-        return zarr_ds
+    if output_dir:
+        return zarr_rechunked, re_chunked_file_path
+    return zarr_ds
