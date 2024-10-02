@@ -102,15 +102,11 @@ def re_chunk_zarr_file(
             chunk_to_write = np.array(new_chunk_data[:data_per_chunk])
 
             if output_dir:
-                # Ensure we write only what fits in the remaining space in the new Zarr array
-                # target_slice_size = \
-                #     min(data_per_chunk, total_size - write_index)
-                zarr_rechunked[write_index:write_index +
-                               data_per_chunk] = chunk_to_write
+                zarr_rechunked[write_index:write_index + data_per_chunk] = \
+                    chunk_to_write
             else:
-                # In-place modification
-                zarr_ds[write_index:write_index +
-                        data_per_chunk] = chunk_to_write
+                zarr_ds[write_index:write_index + data_per_chunk] = \
+                    chunk_to_write
 
             # Remove the written chunk from the buffer and update the write index
             new_chunk_data = new_chunk_data[data_per_chunk:]
@@ -119,13 +115,11 @@ def re_chunk_zarr_file(
     # Managing last chunk for remaining data points
     if new_chunk_data:
         final_chunk_size = len(new_chunk_data)
-        # Extract the final chunk to write
-        chunk_to_write = np.array(new_chunk_data[:final_chunk_size])
+        remained_chunk = np.array(new_chunk_data[:final_chunk_size])
 
         if output_dir:
-            zarr_rechunked[write_index:write_index + final_chunk_size] = \
-                chunk_to_write
+            zarr_rechunked[-final_chunk_size:] = remained_chunk
             return zarr_rechunked, re_chunked_file_path
 
-        zarr_ds[-final_chunk_size:] = chunk_to_write
+        zarr_ds[-final_chunk_size:] = remained_chunk
         return zarr_ds
