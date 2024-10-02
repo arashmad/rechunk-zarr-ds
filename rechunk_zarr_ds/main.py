@@ -103,10 +103,10 @@ def re_chunk_zarr_file(
 
             if output_dir:
                 # Ensure we write only what fits in the remaining space in the new Zarr array
-                target_slice_size = \
-                    min(data_per_chunk, total_size - write_index)
+                # target_slice_size = \
+                #     min(data_per_chunk, total_size - write_index)
                 zarr_rechunked[write_index:write_index +
-                               target_slice_size] = chunk_to_write[:target_slice_size]
+                               data_per_chunk] = chunk_to_write
             else:
                 # In-place modification
                 zarr_ds[write_index:write_index +
@@ -116,7 +116,7 @@ def re_chunk_zarr_file(
             new_chunk_data = new_chunk_data[data_per_chunk:]
             write_index += data_per_chunk
 
-            # Handle the final chunk which may not perfectly fit the new chunk size
+    # Managing last chunk for remaining data points
     if new_chunk_data:
         final_chunk_size = len(new_chunk_data)
         # Extract the final chunk to write
@@ -127,7 +127,5 @@ def re_chunk_zarr_file(
                 chunk_to_write
             return zarr_rechunked, re_chunked_file_path
 
-        target_slice_size = min(data_per_chunk, total_size - i)
-        zarr_ds[i:i + target_slice_size] = chunk_to_write[:target_slice_size]
-
+        zarr_ds[-final_chunk_size:] = chunk_to_write
         return zarr_ds
