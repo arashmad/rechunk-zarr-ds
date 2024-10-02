@@ -60,8 +60,6 @@ def re_chunk_zarr_file(
         raise ValueError(err_message)
 
     # Check if the output directory exists
-    zarr_ds = zarr.open_array(file_path, mode='r+')
-
     if output_dir:
         if not os.path.isdir(output_dir):
             err_message = f'Output directory <{output_dir}> not found.'
@@ -79,6 +77,9 @@ def re_chunk_zarr_file(
             logging.error(err_message)
             raise FileExistsError(err_message)
 
+    zarr_ds = zarr.open_array(file_path, mode='r+')
+
+    if output_dir:
         zarr_rechunked = zarr.create(
             shape=zarr_ds.shape,
             dtype=zarr_ds.dtype,
